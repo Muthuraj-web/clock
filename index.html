@@ -1,0 +1,91 @@
+<html>
+<head>
+<style>
+body{
+  background-color:lightyellow;
+}
+#clock{
+  position:relative;
+  padding-top:10%;
+  border-radius:50%;
+}
+#longhand{
+  position:absolute;
+  width:200px;
+  height:6px;
+  margin-left:50%;
+  background-color:black;
+  transform-origin:left;
+}
+#shorthand{
+  position:absolute;
+  width:100px;
+  height:6px;
+  margin-left:50%;
+  background-color:black;
+  transform-origin:left;
+}
+#secondhand{
+  position:absolute;
+  width:200px;
+  height:2px;
+  margin-left:50%;
+  background-color:brown;
+  transform-origin:left;
+}
+#fade{
+  width:30%;
+  height:100%;
+  background-color:red;
+  float:right;
+}
+#center{
+  position:relative;
+  width:30px;
+  height:30px;
+  margin-left:50%;
+  background-color:brown;
+  z-index:1;
+  top:15px;
+  left:-15px;
+  border-radius:50%;
+}
+</style>
+<script>
+var clock=document.getElementById("clock");
+setInterval(()=>{
+var a=new Date();
+var h=a.getHours();
+if(h>=12)
+  {
+    h=(h-12);
+  }
+var m=a.getMinutes();
+var s=a.getSeconds();
+var hour=document.getElementById("shorthand");
+var min=document.getElementById("longhand");
+var sec=document.getElementById("secondhand");
+hour.style.transform="rotate("+(-90+(h*30))+"deg)";
+min.style.transform="rotate("+(-90+(m*6))+"deg)";
+sec.style.transform="rotate("+(-90+(s*6))+"deg)";
+},1000);
+
+</script>
+</head>
+<body>
+<div id="clock">
+  <div id="center">
+  </div>
+  <div id="longhand">
+    <div id="fade">
+    </div>
+  </div>
+  <div id="shorthand">
+    <div id="fade">
+    </div>
+  </div>
+  <div id="secondhand">
+  </div>
+</div>
+</body>
+</html>
